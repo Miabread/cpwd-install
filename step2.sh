@@ -40,7 +40,8 @@ cd /home/cpwd
 sudo -u cpwd git clone https://aur.archlinux.org/yay.git
 cd yay
 sudo -u cpwd makepkg -si --noconfirm
-rm -rf yay
+cd /root
+rm -rf /home/cpwd/yay
 
 # Setup audio 
 pacman -S --noconfirm pulseaudio
