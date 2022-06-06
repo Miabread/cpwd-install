@@ -40,12 +40,13 @@ cd /home/cpwd
 sudo -u cpwd git clone https://aur.archlinux.org/yay.git
 cd yay
 sudo -u cpwd makepkg -si --noconfirm
+rm -rf yay
 
 # Setup audio 
 pacman -S --noconfirm pulseaudio
 
 # Setup login manager
-sudo -u cpwd yay -S --noconfirm ly
+sudo -u cpwd yay -S --noconfirm ly xorg-server
 systemctl enable ly
 
 # Clean up
