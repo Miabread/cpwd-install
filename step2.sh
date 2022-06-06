@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+# Setup locale
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+
 # Set hostname
 echo cpwdtoast > /etc/hostname
 
@@ -18,11 +23,6 @@ cp /boot/EFI/grub/grubx64.efi /boot/EFI/boot/bootx64.efi
 pacman -S --noconfirm networkmanager
 systemctl enable NetworkManager.service
 
-# Setup locale
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-locale-gen
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-
 # Setup time
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc --utc
@@ -37,7 +37,7 @@ passwd -d cpwd
 # Setup yay
 pacman -S --noconfirm git 
 cd /home/cpwd
-git clone https://aur.archlinux.org/yay.git
+sudo -u cpwd git clone https://aur.archlinux.org/yay.git
 cd yay
 sudo -u cpwd makepkg -si --noconfirm
 
