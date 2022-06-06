@@ -30,11 +30,24 @@ hwclock --systohc --utc
 # Setup sudo
 echo 'ALL ALL=(ALL:ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
 
-# Setup part3
+# Setup system user
 useradd -m cpwd
 passwd -d cpwd
-curl https://jamesbeeprog.github.io/cpwd-install/step3.sh > /home/cpwd/step3.sh
-chmod +x /home/cpwd/step3.sh
+
+# Setup yay
+pacman -S --noconfirm git 
+cd /home/cpwd
+git clone https://aur.archlinux.org/yay.git
+cd yay
+sudo -u cpwd makepkg -si --noconfirm
+
+# Setup audio 
+yay -Syu --noconfirm pulseaudio
+pulseaudio --start
+
+# Setup login manager
+yay -Syu --noconfirm ly
+sudo systemctl enable ly
 
 # Clean up
 rm /step2.sh
