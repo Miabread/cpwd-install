@@ -32,6 +32,7 @@ echo 'ALL ALL=(ALL:ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
 
 # Setup part3
 useradd -m cpwd
+passwd -d cpwd
 curl https://jamesbeeprog.github.io/cpwd-install/step3.sh > /home/cpwd/step3.sh
 chmod +x /home/cpwd/step3.sh
 
