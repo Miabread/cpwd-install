@@ -25,8 +25,12 @@ ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc --utc
 
 # Setup sudo
-passwd -d root
 echo 'ALL ALL=(ALL:ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
+
+# Setup part3
+useradd -m cpwd
+curl https://jamesbeeprog.github.io/cpwd-install/step3.sh > /home/cpwd/step3.sh
+chmod +x /home/cpwd/step3.sh
 
 # Clean up
 rm /step2.sh

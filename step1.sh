@@ -27,5 +27,5 @@ pacstrap /mnt base linux linux-firmware base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Change into the computer
-curl https://raw.githubusercontent.com/jamesBeeProg/dotfiles/main/.scripts/cpwd/step2.sh > /mnt/step2.sh
+curl https://jamesbeeprog.github.io/cpwd-install/step2.sh > /mnt/step2.sh
 arch-chroot /mnt /bin/bash /step2.sh
