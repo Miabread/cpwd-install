@@ -7,7 +7,10 @@ echo cpwdtoast > /etc/hostname
 # Setup boot loader
 pacman -S --noconfirm grub efibootmgr intel-ucode amd-ucode 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+printf "\nGRUB_HIDDEN_TIMEOUT=0\nGRUB_TIMEOUT=0\n" > /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
+
+# Workaround for some old computers
 mkdir /boot/EFI/boot
 cp /boot/EFI/grub/grubx64.efi /boot/EFI/boot/bootx64.efi
 
