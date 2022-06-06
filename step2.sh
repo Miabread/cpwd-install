@@ -42,12 +42,11 @@ cd yay
 sudo -u cpwd makepkg -si --noconfirm
 
 # Setup audio 
-yay -Syu --noconfirm pulseaudio
-pulseaudio --start
+pacman -S --noconfirm pulseaudio
 
 # Setup login manager
-yay -Syu --noconfirm ly
-sudo systemctl enable ly
+sudo -u cpwd yay -S --noconfirm ly
+systemctl enable ly
 
 # Clean up
 rm /step2.sh
