@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -euxo pipefail
 
 # Setup locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
